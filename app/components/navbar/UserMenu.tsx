@@ -6,10 +6,16 @@ import {useCallback, useState} from "react";
 import MenuItem from "@/app/components/navbar/MenuItem";
 import useRegisterModal from "@/app/hooks/UseRegisterModal";
 import useLoginModal from "@/app/hooks/UseLoginModal";
+import {User} from "next-auth";
+import {signOut} from "next-auth/react";
 
+interface UserMenuProps {
+    currentUser?: User | null;
+}
 
-
-const UserMenu = () => {
+const UserMenu: React.FC<UserMenuProps> = ({
+                                                currentUser
+                                           }) => {
     const RegisterModal = useRegisterModal();
     const LoginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false)
@@ -33,11 +39,20 @@ const UserMenu = () => {
             {isOpen && (
                 <div className="absolute rounded-xl md:w-3/4 w-[40vw] bg-white shadow-md border overflow-hidden text-sm top-12 rigth-0">
                     <div className="flex flex-col cursor-pointer">
-                        <>
-                            <MenuItem onClick={RegisterModal.onOpen} label="Registrarse"/>
+                        {currentUser ? (
+                            <>
+                                <MenuItem onClick={() => {}} label="Mis favoritos"/>
+                                <MenuItem onClick={() => {}} label="Home"/>
+                                <hr />
 
-                            <MenuItem onClick={LoginModal.onOpen} label="Iniciar Sesion"/>
-                        </>
+                                <MenuItem onClick={() => signOut()} label="Cerrar sesion"/>
+                            </>
+                            ):(
+                                <>
+                                    <MenuItem onClick={() => {}} label="Registrarse"/>
+                                    <MenuItem onClick={LoginModal.onOpen} label="Iniciar Sesion"/>
+                                </>
+                            )}
                     </div>
                 </div>
             )}
