@@ -5,11 +5,13 @@ import Avatar from "../Avatar";
 import {useCallback, useState} from "react";
 import MenuItem from "@/app/components/navbar/MenuItem";
 import useRegisterModal from "@/app/hooks/UseRegisterModal";
+import useLoginModal from "@/app/hooks/UseLoginModal";
 
 
 
 const UserMenu = () => {
     const RegisterModal = useRegisterModal();
+    const LoginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false)
 
     const toggleOpen = useCallback(() => {
@@ -34,7 +36,7 @@ const UserMenu = () => {
                         <>
                             <MenuItem onClick={RegisterModal.onOpen} label="Registrarse"/>
 
-                            <MenuItem onClick={() => {}} label="Iniciar Sesion"/>
+                            <MenuItem onClick={LoginModal.onOpen} label="Iniciar Sesion"/>
                         </>
                     </div>
                 </div>

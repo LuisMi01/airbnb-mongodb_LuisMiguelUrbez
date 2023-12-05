@@ -7,6 +7,7 @@ import React from "react";
 import ClientOnly from "@/app/components/ClientOnly";
 import RegisterModal from "@/app/components/modals/RegisterModal";
 import ToasterProvider from "@/app/providers/ToasterProvider";
+import LoginModal from "@/app/components/modals/LoginModal";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,6 +30,7 @@ export default function RootLayout({
       <body className={font.className}>
       <ClientOnly>
           <ToasterProvider/>
+          <LoginModal/>
           <RegisterModal/>
             <Navbar/>
           </ClientOnly>
