@@ -1,6 +1,5 @@
 'use client'
 import axios from 'axios';
-import {AiFillGithub}  from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc";
 import {useCallback, useState} from "react";
 import {FieldValues, SubmitHandler, useForm} from "react-hook-form";
@@ -35,12 +34,12 @@ const RegisterModal = () => {
         axios
             .post("/api/register", data)
             .then(() => {
-                toast.success("Success!");
+                toast.success("¡Éxito!");
                 registerModal.onClose();
                 loginModal.onOpen();
             })
             .catch((error) => {
-                toast.error("Something went wrong !");
+                toast.error("Algo no ha ido muy bien");
             })
             .finally(() => {
                 setIsLoading(false);
@@ -88,21 +87,15 @@ const RegisterModal = () => {
             <hr />
             <Button
                 outline
-                label="Continue with Google"
+                label="Registrate con Google"
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
-            {/* <Button
-        outline
-        label="Continue with Github"
-        icon={AiFillGithub}
-        onClick={() => {}}
-      /> */}
             <div className=" mt-4 text-center font-light text-neutral-500 ">
                 <div className="flex flex-row items-center justify-center gap-2" >
-                    <div>Already have an account</div>
+                    <div>Ya tienes una cuenta</div>
                     <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline">
-                        Log in
+                        Inicia Sesion
                     </div>
                 </div>
             </div>
