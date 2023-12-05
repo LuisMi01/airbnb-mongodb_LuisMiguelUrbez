@@ -8,6 +8,7 @@ import useRegisterModal from "@/app/hooks/UseRegisterModal";
 import useLoginModal from "@/app/hooks/UseLoginModal";
 import {User} from "next-auth";
 import {signOut} from "next-auth/react";
+import registerModal from "@/app/components/modals/RegisterModal";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -49,7 +50,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                             </>
                             ):(
                                 <>
-                                    <MenuItem onClick={() => {}} label="Registrarse"/>
+                                    <MenuItem onClick={RegisterModal.onOpen} label="Registrarse"/>
                                     <MenuItem onClick={LoginModal.onOpen} label="Iniciar Sesion"/>
                                 </>
                             )}

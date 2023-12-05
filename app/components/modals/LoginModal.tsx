@@ -38,6 +38,7 @@ const LoginModal = () => {
             redirect: false,
         }).then((callback) => {
             setIsLoading(false);
+
             if (callback?.ok) {
                 toast.success("Sesion Iniciada");
                 router.refresh();
@@ -87,6 +88,10 @@ const LoginModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
+        <div>¿Primera vez usando Airbnb?</div>
+            <div onClick={toggle} className=" cursor-pointer text-neutral-800 hover:underline">
+                Crear una cuenta
+            </div>
         </div>
     );
     return (
