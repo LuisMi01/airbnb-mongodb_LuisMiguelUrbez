@@ -88,9 +88,13 @@ const LoginModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
-        <div>¿Primera vez usando Airbnb?</div>
-            <div onClick={toggle} className=" cursor-pointer text-neutral-800 hover:underline">
-                Crear una cuenta
+            <div className=" mt-4 text-center font-light text-neutral-500 ">
+                <div className="flex flex-row items-center justify-center gap-2" >
+                    <div>Primera vez usando Airbnb?</div>
+                    <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline">
+                        Crear una cuenta
+                    </div>
+                </div>
             </div>
         </div>
     );
