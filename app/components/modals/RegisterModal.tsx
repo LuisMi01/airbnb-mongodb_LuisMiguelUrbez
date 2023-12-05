@@ -34,7 +34,7 @@ const RegisterModal = () => {
         axios
             .post("/api/register", data)
             .then(() => {
-                toast.success("¡Éxito!");
+                toast.success("¡Éxito! Cuenta creada correctamente");
                 registerModal.onClose();
                 loginModal.onOpen();
             })
@@ -64,7 +64,7 @@ const RegisterModal = () => {
             />
             <Input
                 id="name"
-                label="Name"
+                label="Nombre"
                 disabled={isLoading}
                 register={register}
                 errors={errors}
@@ -72,7 +72,7 @@ const RegisterModal = () => {
             />
             <Input
                 id="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 disabled={isLoading}
                 register={register}

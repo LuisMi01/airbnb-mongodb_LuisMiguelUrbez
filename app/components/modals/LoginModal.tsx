@@ -40,7 +40,7 @@ const LoginModal = () => {
         }).then((callback) => {
             setIsLoading(false);
             if (callback?.ok) {
-                toast.success("Logged in");
+                toast.success("Sesion iniciada correctamente");
                 router.refresh();
                 loginModal.onClose();
             }
@@ -58,7 +58,7 @@ const LoginModal = () => {
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title="Welcome back" subtitle="Login to your account" />
+            <Heading title="Bienvenido de nuevo" subtitle="Inicie sesion con las credenciales de su cuenta" />
             <Input
                 id="email"
                 label="Email"
@@ -69,7 +69,7 @@ const LoginModal = () => {
             />
             <Input
                 id="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 disabled={isLoading}
                 register={register}
@@ -88,37 +88,12 @@ const LoginModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
-            {/* <Button
-        outline
-        label="Continue with Github"
-        icon={AiFillGithub}
-        onClick={() => {}}
-      /> */}
-            <div
-                className="
-          mt-4
-          text-center
-          font-light
-          text-neutral-500
-        "
-            >
-                <div
-                    className="
-            flex flex-row
-            items-center
-            justify-center
-            gap-2"
-                >
-                    <div>First time using Airbnb ?</div>
-                    <div
-                        onClick={toggle}
-                        className="
-              cursor-pointer
-              text-neutral-800
-              hover:underline"
-                    >
-                        Create an account
-                    </div>
+            <div className=" mt-4 text-center font-light text-neutral-500">
+                <div className=" flex flex-row items-center justify-center gap-2">
+                    <div>¿Primera vez usando Airbnb?</div>
+                        <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline" >
+                            Crear una cuenta
+                        </div>
                 </div>
             </div>
         </div>
@@ -128,8 +103,8 @@ const LoginModal = () => {
             <Modal
                 disabled={isLoading}
                 isOpen={loginModal.isOpen}
-                title="Login"
-                actionLabel="Continue"
+                title="Iniciar sesion"
+                actionLabel="Continuar"
                 onClose={loginModal.onClose}
                 onSubmit={handleSubmit(onSubmit)}
                 body={bodyContent}
