@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Nunito} from "next/font/google";
-import Navbar from '@/app/components/banner/Navbar';
+import Navbar from "@/app/components/navbar/Navbar";
+import './layout.css'
 import React from "react";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -24,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-      <Navbar />
+      <Navbar/>
       {children}</body>
     </html>
   )

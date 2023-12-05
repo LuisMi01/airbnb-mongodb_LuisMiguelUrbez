@@ -1,8 +1,10 @@
+import React from 'react';
+
 const Navbar = () => {
     return (
         <div className="navbar">
             <div className="logo">
-               imagen_airbnb
+                imagen_airbnb
             </div>
             <div className="search">
                 <input type="text" placeholder="Start your search" />
@@ -17,3 +19,6 @@ const Navbar = () => {
         </div>
     )
 }
+
+
+export default Navbar;
