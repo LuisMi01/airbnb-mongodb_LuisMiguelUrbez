@@ -12,17 +12,18 @@ import Input from "../inputs/Input";
 import {toast} from "react-hot-toast";
 import useLoginModal from "@/app/hooks/UseLoginModal";
 import {useRouter} from "next/navigation";
+import RegisterModal from "@/app/components/modals/RegisterModal";
 
 const LoginModal = () => {
     const router = useRouter();
     const registerModal = useRegisterModal();
-    const LoginModal = useLoginModal();
-    const [isLoading, setIsLoading] = useState(false);
+    const loginModal = useLoginModal();
 
+    const [isLoading, setIsLoading] = useState(false);
     const {
         register,
         handleSubmit,
-        formState: {errors},
+        formState: { errors },
     } = useForm<FieldValues>({
         defaultValues: {
             email: "",
@@ -38,11 +39,10 @@ const LoginModal = () => {
             redirect: false,
         }).then((callback) => {
             setIsLoading(false);
-
             if (callback?.ok) {
-                toast.success("Sesion Iniciada");
+                toast.success("Logged in");
                 router.refresh();
-                LoginModal.onClose();
+                loginModal.onClose();
             }
 
             if (callback?.error) {
@@ -52,13 +52,13 @@ const LoginModal = () => {
     };
 
     const toggle = useCallback(() => {
-        registerModal.onClose();
-        LoginModal.onOpen();
-    }, [LoginModal, registerModal]);
+        loginModal.onClose();
+        registerModal.onOpen();
+    }, [loginModal, registerModal]);
 
     const bodyContent = (
         <div className="flex flex-col gap-4">
-            <Heading title="Bienvenido de nuevo" subtitle="Inicie sesion" />
+            <Heading title="Welcome back" subtitle="Login to your account" />
             <Input
                 id="email"
                 label="Email"
@@ -84,15 +84,40 @@ const LoginModal = () => {
             <hr />
             <Button
                 outline
-                label="Registrate con Google"
+                label="Continue with Google"
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
-            <div className=" mt-4 text-center font-light text-neutral-500 ">
-                <div className="flex flex-row items-center justify-center gap-2" >
-                    <div>Primera vez usando Airbnb?</div>
-                    <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline">
-                        Crear una cuenta
+            {/* <Button
+        outline
+        label="Continue with Github"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      /> */}
+            <div
+                className="
+          mt-4
+          text-center
+          font-light
+          text-neutral-500
+        "
+            >
+                <div
+                    className="
+            flex flex-row
+            items-center
+            justify-center
+            gap-2"
+                >
+                    <div>First time using Airbnb ?</div>
+                    <div
+                        onClick={toggle}
+                        className="
+              cursor-pointer
+              text-neutral-800
+              hover:underline"
+                    >
+                        Create an account
                     </div>
                 </div>
             </div>
@@ -102,10 +127,10 @@ const LoginModal = () => {
         <div>
             <Modal
                 disabled={isLoading}
-                isOpen={LoginModal.isOpen}
-                title="Iniciar Sesion"
-                actionLabel="Continuar"
-                onClose={LoginModal.onClose}
+                isOpen={loginModal.isOpen}
+                title="Login"
+                actionLabel="Continue"
+                onClose={loginModal.onClose}
                 onSubmit={handleSubmit(onSubmit)}
                 body={bodyContent}
                 footer={footerContent}
