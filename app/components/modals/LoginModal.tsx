@@ -38,14 +38,16 @@ const LoginModal = () => {
             redirect: false,
         }).then((callback) => {
             setIsLoading(false);
-            if (callback?.error) {
-                toast.error(callback.error);
-            } else {
-                toast.success("Inicio de sesion exitoso");
+            if (callback?.ok) {
+                toast.success("Sesion Iniciada");
                 router.refresh();
                 LoginModal.onClose();
             }
-        })
+
+            if (callback?.error) {
+                toast.error(callback.error);
+            }
+        });
     };
 
     const toggle = useCallback(() => {
