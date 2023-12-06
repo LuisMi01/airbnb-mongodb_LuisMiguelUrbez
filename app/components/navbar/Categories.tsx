@@ -5,11 +5,12 @@ import {GiWindmill} from "react-icons/gi";
 import {MdOutlineVilla} from "react-icons/md";
 import CategoryBox from "../CategoryBox"
 
-export const categories = [{
-    label: 'Playa',
-    icon: TbBeach,
-    description: 'Esta casa esta cerca de la playa'
-},
+export const categories = [
+    {
+        label: 'Playa',
+        icon: TbBeach,
+        description: 'Esta casa esta cerca de la playa'
+    },
     {
         label: 'Molinos',
         icon: GiWindmill,
@@ -28,7 +29,12 @@ const Categories= () => {
         <Container>
             <div className="pt4 flex flex-row items-center justify-between overflow-x-auto">
                 {categories.map((item, index) => (
-                    <CategoryBox key={item.label} label={item.label} description={item.description} icon={item.icon} />
+                    <CategoryBox
+                        key={index}
+                        label={item.label}
+                        icon={item.icon}
+                        //description={item.description}
+                    />
                 ))}
             </div>
         </Container>
