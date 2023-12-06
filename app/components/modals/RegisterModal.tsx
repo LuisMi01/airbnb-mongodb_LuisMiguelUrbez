@@ -10,6 +10,7 @@ import Heading from "../Heading";
 import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
+import {wait} from "next/dist/lib/wait";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
@@ -47,8 +48,9 @@ const RegisterModal = () => {
     };
 
     const toggle = useCallback(() => {
-        loginModal.onOpen();
         registerModal.onClose();
+        wait(1000).then(r => loginModal.onOpen());
+
     }, [loginModal, registerModal]);
 
     const bodyContent = (
