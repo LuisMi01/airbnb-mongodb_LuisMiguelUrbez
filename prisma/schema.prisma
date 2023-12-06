@@ -19,7 +19,7 @@ model User {
   favouritesIds String[] @db.ObjectId
 
   accounts Account[]
-  listings Listing[]
+  listings listingsAndReviews[]
 }
 
 model Account {
@@ -41,20 +41,51 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-model Listing {
+model listingsAndReviews {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   userId    String  @db.ObjectId
-  price     Int
-  title     String
-  description String
-  imageSrc     String
-  bathroomCount Int
-  category  String
-  roomCount Int
-  guestsCount Int
-  locationValue String
-  createdAt DateTime @default(now())
 
+  price     Int
+  name      String
+  description   String
+  property_type String
+  last_scraped DateTime
+  bedrooms Int
+  bathrooms Int
+  accomodates Int
+
+  images         Images     @relation(fields: [imagesId], references: [id])
+  address       Address    @relation(fields: [addressId], references: [id])
+
+  @@map("listingsAndReviews")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Images {
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
+  ListingId String  @db.ObjectId
+
+  thumbnailUrl   String?
+  mediumUrl      String?
+  pictureUrl     String?
+  xlPictureUrl   String?
+
+  @@map("listingsAndReview")
+
+  listing listingsAndReviews @relation(fields: [ListingId], references: [id], onDelete: Cascade)
+}
+
+model Address{
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  ListingId String  @db.ObjectId
+
+  street String?
+  suburb String?
+  government_area String?
+  market String?
+  country String?
+  country_code String?
+
+  @@map("listingsAndReview")
 }
