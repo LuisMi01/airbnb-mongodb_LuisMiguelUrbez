@@ -8,8 +8,9 @@ import useRegisterModal from "@/app/hooks/UseRegisterModal";
 import useLoginModal from "@/app/hooks/UseLoginModal";
 import {User} from "next-auth";
 import {signOut} from "next-auth/react";
-import registerModal from "@/app/components/modals/RegisterModal";
 import Image from "next/image";
+import loginModal from "@/app/components/modals/LoginModal";
+import rentModal from "@/app/components/modals/RentModal";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -25,9 +26,18 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
     }, []);
+
+    const onRent = useCallback(() => {
+        if (!currentUser) {
+            //return loginModal.onOpen();
+        }
+    }, [currentUser, loginModal]);
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
+                <div onClick={rentModal} className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
+                    Añade una casa
+                </div>
                 <div onClick={() =>{window.open('https://github.com/LuisMi01/airbnb-mongodb_LuisMiguelUrbez', '_blank');}
                     } className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
                         <Image src='/images/githublogo.png' alt={"Github"} width={30} height={30}/>
