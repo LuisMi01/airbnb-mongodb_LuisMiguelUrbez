@@ -49,7 +49,7 @@ const RegisterModal = () => {
 
     const toggle = useCallback(() => {
         registerModal.onClose();
-        wait(1000).then(r => loginModal.onOpen());
+        wait(100).then(r => loginModal.onOpen());
 
     }, [loginModal, registerModal]);
 
