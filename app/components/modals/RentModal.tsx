@@ -93,7 +93,7 @@ const RentModal = () => {
 
         axios.post('/api/listings', data)
             .then(() => {
-                toast.success('Casa añadida!');
+                toast.success('¡Casa añadida!');
                 router.refresh();
                 reset();
                 setStep(STEPS.CATEGORY)
@@ -127,9 +127,9 @@ const RentModal = () => {
         <div className="flex flex-col gap-8">
             <Heading
                 title="Cuales de estos describe mejor tu hogar"
-                subtitle="Escoje ua categoria"
+                subtitle="Selecciona una categoria"
             />
-            <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-autoç ">
+            <div className=" grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[50vh] overflow-y-auto ">
                 {categories.map((item) => (
                     <div key={item.label} className="col-span-1">
                         <CategoryInput
@@ -165,14 +165,14 @@ const RentModal = () => {
         bodyContent = (
             <div className="flex flex-col gap-8">
                 <Heading
-                    title="Que comodidades tienes?"
+                    title="Que normas tienes?"
                     subtitle=""
                 />
                 <Counter
                     onChange={(value) => setCustomValue('guestCount', value)}
                     value={guestCount}
-                    title="Anfritiones"
-                    subtitle="¿Cuantos alojados puede haber?"
+                    title="Anfitriones"
+                    subtitle="¿Cuantos anfitriones puede haber en la casa?"
                 />
                 <hr />
                 <Counter
@@ -216,7 +216,7 @@ const RentModal = () => {
                 />
                 <Input
                     id="title"
-                    label="Titulo"
+                    label="Nombre de la casa"
                     disabled={isLoading}
                     register={register}
                     errors={errors}
