@@ -9,6 +9,7 @@ import useLoginModal from "@/app/hooks/UseLoginModal";
 import {User} from "next-auth";
 import {signOut} from "next-auth/react";
 import registerModal from "@/app/components/modals/RegisterModal";
+import Image from "next/image";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -27,8 +28,13 @@ const UserMenu: React.FC<UserMenuProps> = ({
     return (
         <div className="relative">
             <div className="flex flex-row items-center gap-3">
-                <div onClick={() => {}} className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
-                    Home
+                <div onClick={() =>{window.open('https://github.com/LuisMi01/airbnb-mongodb_LuisMiguelUrbez', '_blank');}
+                    } className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
+                        <Image src='/images/githublogo.png' alt={"Github"} width={30} height={30}/>
+                </div>
+                <div onClick={() =>{window.open('https://uax.com', '_blank');}
+                    } className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
+                        <Image src='/images/uaxlogo.png' alt={"Uax"} width={30} height={30}/>
                 </div>
                 <div onClick={toggleOpen} className="p-4 md:py-5 md:px-7 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
                     <AiOutlineMenu/>
