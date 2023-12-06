@@ -91,12 +91,13 @@ const RegisterModal = () => {
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
-            <div className="text-neutral-500 text-center mt-4 font-light">
-                <p>¿Ya tienes una cuenta?
-                    <span onClick={toggle} className="text-neutral-800 cursor-pointer hover:underline">
-                        Registrate
-                    </span>
-                </p>
+            <div className=" mt-4 text-center font-light text-neutral-500">
+                <div className=" flex flex-row items-center justify-center gap-2">
+                    <div>¿Ya tiene una cuenta?</div>
+                    <div onClick={toggle} className="cursor-pointer text-neutral-800 hover:underline" >
+                        Iniciar sesión
+                    </div>
+                </div>
             </div>
         </div>
     );

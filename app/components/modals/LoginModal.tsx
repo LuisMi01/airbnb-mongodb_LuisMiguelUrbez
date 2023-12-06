@@ -56,6 +56,8 @@ const LoginModal = () => {
         registerModal.onOpen();
     }, [loginModal, registerModal]);
 
+
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading title="Bienvenido de nuevo" subtitle="Inicie sesion con las credenciales de su cuenta" />
