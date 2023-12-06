@@ -33,7 +33,7 @@ const Categories= () => {
                         key={index}
                         label={item.label}
                         icon={item.icon}
-                        //description={item.description}
+                        description={item.description}
                     />
                 ))}
             </div>
