@@ -9,9 +9,7 @@ import useLoginModal from "@/app/hooks/UseLoginModal";
 import {User} from "next-auth";
 import {signOut} from "next-auth/react";
 import Image from "next/image";
-import loginModal from "@/app/components/modals/LoginModal";
-import rentModal from "@/app/components/modals/RentModal";
-import RentModal from "@/app/components/modals/RentModal";
+import useRentModal from "@/app/hooks/UseRentModal";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -23,15 +21,19 @@ const UserMenu: React.FC<UserMenuProps> = ({
     const RegisterModal = useRegisterModal();
     const LoginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false)
-    const rentModal = useRegisterModal();
+    const rentModal = useRentModal();
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
     }, []);
 
     const onRent = useCallback(() => {
+        if(!currentUser) {
+            return LoginModal.onOpen();
+        }
         rentModal.onOpen();
-    }, [LoginModal, rentModal]);
+
+    }, [currentUser, rentModal]);
 
     return (
         <div className="relative">
