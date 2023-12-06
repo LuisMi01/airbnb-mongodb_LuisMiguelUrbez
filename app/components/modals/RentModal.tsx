@@ -46,7 +46,7 @@ const RentModal = () => {
         defaultValues: {
             category: '',
             location: null,
-            guestCount: 1,
+            guests: 1,
             roomCount: 1,
             bathroomCount: 1,
             imageSrc: '',
@@ -58,7 +58,7 @@ const RentModal = () => {
 
     const location = watch('location');
     const category = watch('category');
-    const guestCount = watch('guestCount');
+    const guests = watch('guests');
     const roomCount = watch('roomCount');
     const bathroomCount = watch('bathroomCount');
     const imageSrc = watch('imageSrc');
@@ -169,8 +169,8 @@ const RentModal = () => {
                     subtitle=""
                 />
                 <Counter
-                    onChange={(value) => setCustomValue('guestCount', value)}
-                    value={guestCount}
+                    onChange={(value) => setCustomValue('guests', value)}
+                    value={guests}
                     title="Anfitriones"
                     subtitle="¿Cuantos anfitriones puede haber en la casa?"
                 />
