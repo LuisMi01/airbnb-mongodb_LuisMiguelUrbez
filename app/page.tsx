@@ -1,8 +1,17 @@
-import {text} from "stream/consumers";
 import ClientOnly from "@/app/components/ClientOnly";
 import Container from "@/app/components/Container";
+import EmptyState from "@/app/components/EmptyState";
 
 export default function Home() {
+    const isEmpty = true;
+
+    if(isEmpty) {
+        return(
+            <ClientOnly>
+                <EmptyState showReset/>
+            </ClientOnly>
+        )
+    }
   return (
       <ClientOnly>
         <div className="text-rose-500 text-2xl">Airbnb de Luis Miguel Urbez</div>
