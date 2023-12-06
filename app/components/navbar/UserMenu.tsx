@@ -19,7 +19,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                                                currentUser
                                            }) => {
     const RegisterModal = useRegisterModal();
-    const LoginModal = useLoginModal();
+    const loginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false)
     const rentModal = useRentModal();
 
@@ -28,12 +28,12 @@ const UserMenu: React.FC<UserMenuProps> = ({
     }, []);
 
     const onRent = useCallback(() => {
-        if(!currentUser) {
-            return LoginModal.onOpen();
+        if (!currentUser) {
+            return loginModal.onOpen();
         }
-        rentModal.onOpen();
 
-    }, [currentUser, rentModal]);
+        rentModal.onOpen();
+    }, [loginModal, rentModal, currentUser]);
 
     return (
         <div className="relative">
@@ -72,7 +72,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                             ):(
                                 <>
                                     <MenuItem onClick={RegisterModal.onOpen} label="Registrarse"/>
-                                    <MenuItem onClick={LoginModal.onOpen} label="Iniciar Sesion"/>
+                                    <MenuItem onClick={loginModal.onOpen} label="Iniciar Sesion"/>
                                 </>
                             )}
                     </div>
