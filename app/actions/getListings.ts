@@ -2,12 +2,12 @@ import prisma from "@/app/libs/prismadb";
 
 export default async function getListings() {
     try{
-        const listingsAndReviews = await prisma.listing.findMany({
+        const listings = await prisma.listing.findMany({
             orderBy: {
-                id: 'desc'
+                createdAt: 'desc'
             }
         })
-        return listingsAndReviews
+        return listings
     }catch (error: any) {
         throw new error (error)
     }
