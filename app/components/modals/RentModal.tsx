@@ -236,7 +236,7 @@ const RentModal = () => {
         <Modal
             disabled={isLoading}
             isOpen={rentModal.isOpen}
-            title="Añade una casa a alquilar"
+            title="Añade una casa"
             actionLabel={actionLabel}
             onSubmit={handleSubmit(onSubmit)}
             secondaryActionLabel={secondaryActionLabel}
