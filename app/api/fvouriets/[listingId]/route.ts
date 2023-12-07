@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import getCurrentUser from "@/app/actions/GetCurrentUser"
+import getCurrentUser from "@/app/actions/GetCurrentUser";
 import prisma from "@/app/libs/prismadb";
 
 interface IParams {
@@ -20,19 +20,19 @@ export async function POST(
     const { listingId } = params;
 
     if (!listingId || typeof listingId !== 'string') {
-        throw new Error('ID no valido');
+        throw new Error('Invalid ID');
     }
 
-    let favouritesIds = [...(currentUser.favouritesIds || [])];
+    let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-    favouritesIds.push(listingId);
+    favoriteIds.push(listingId);
 
     const user = await prisma.user.update({
         where: {
             id: currentUser.id
         },
         data: {
-            favouritesIds
+            favoriteIds
         }
     });
 
@@ -52,19 +52,19 @@ export async function DELETE(
     const { listingId } = params;
 
     if (!listingId || typeof listingId !== 'string') {
-        throw new Error('ID no valido');
+        throw new Error('Invalid ID');
     }
 
-    let favouritesIds = [...(currentUser.favouritesIds || [])];
+    let favoriteIds = [...(currentUser.favoriteIds || [])];
 
-    favouritesIds = favouritesIds.filter((id) => id !== listingId);
+    favoriteIds = favoriteIds.filter((id) => id !== listingId);
 
     const user = await prisma.user.update({
         where: {
             id: currentUser.id
         },
         data: {
-            favouritesIds
+            favoriteIds
         }
     });
 
