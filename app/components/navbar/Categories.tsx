@@ -121,7 +121,6 @@ const Categories= () => {
                 ))}
             </div>
         </Container>
-
     )
 }
 

@@ -27,6 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 </Container>
             </div>
             <Categories />
+            <hr/>
         </div>
     )
 }
