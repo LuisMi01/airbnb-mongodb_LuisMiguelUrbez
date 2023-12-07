@@ -1,38 +1,35 @@
-import EmptyState   from "@/app/components/EmptyState";
+
+import EmptyState from "@/app/components/EmptyState";
+import ClientOnly from "@/app/components/ClientOnly";
+
 import getCurrentUser from "@/app/actions/GetCurrentUser";
-import ClientOnly    from "@/app/components/ClientOnly";
-import {router} from "next/client";
-import getFavoritesListings from "@/app/actions/getFavoritesListings";
-import FavoritesClient from "@/app/favorites/FavoritesClient";
+import getFavoriteListings from "../actions/getFavoritesListings";
+import FavoritesClient from "./FavoritesClient";
+
 
 const ListingPage = async () => {
-
-    const listings = await getFavoritesListings();
+    const listings = await getFavoriteListings();
     const currentUser = await getCurrentUser();
 
-    if (listings.length > 0) {
+    if (listings.length === 0) {
         return (
             <ClientOnly>
                 <EmptyState
-                title="No tienes casas guardadas en favoritos"
-                subtitle="Añade casas a tus favoritos para tenerlas siempre a mano"
+                    title="No se encontraron casas favoritas."
+                    subtitle="Añade casas desde la pagina principal."
                 />
-                <button onClick={() => router.push('/')} className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-md mt-4">
-                    Busca casas!
-                </button>
             </ClientOnly>
-        )
+        );
     }
 
     return (
         <ClientOnly>
             <FavoritesClient
-                currentUser={currentUser}
                 listings={listings}
+                currentUser={currentUser}
             />
         </ClientOnly>
-    )
-
+    );
 }
 
 export default ListingPage;

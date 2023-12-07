@@ -10,7 +10,7 @@ import HeartButton from "@/app/components/HeartButton";
 
 interface ListingCardProps {
     data: SafeListing
-    onAction?: (id: String) => void
+    onAction?: (id: string) => void
     disabled?: boolean
     actionLabel?: string
     actionId?: string
