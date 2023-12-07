@@ -17,9 +17,9 @@ interface PropertiesClientProps {
 }
 
 const PropertiesClient: React.FC<PropertiesClientProps> = ({
-                                                               listings,
-                                                               currentUser
-                                                           }) => {
+listings,
+currentUser
+}) => {
     const router = useRouter();
     const [deletingId, setDeletingId] = useState('');
 
@@ -54,7 +54,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
                         actionId={listing.id}
                         onAction={onDelete}
                         disabled={deletingId === listing.id}
-                        actionLabel="Delete property"
+                        actionLabel="Eliminar esta propiedad"
                         currentUser={currentUser}
                     />
                 ))}
