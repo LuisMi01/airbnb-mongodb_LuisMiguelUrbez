@@ -1,37 +1,40 @@
-import prisma from '../libs/prismadb'
+import prisma from "@/app/libs/prismadb";
 
 interface IParams {
     listingId?: string;
 }
 
-export default async function getListingById(params: IParams) {
-  try {
-      const {listingId} = params;
+export default async function getListingById(
+    params: IParams
+) {
+    try {
+        const { listingId } = params;
 
-      const listing = await prisma.listing.findUnique({
-        where: {
-          id: listingId,
-        },
-        include: {
-            user: true,
+        const listing = await prisma.listing.findUnique({
+            where: {
+                id: listingId,
+            },
+            include: {
+                user: true
+            }
+        });
+
+        if (!listing) {
+            return null;
         }
-      });
 
-      if (!listing) {
-        throw new Error('No hay lista');
-      }
-      return {
-          ...listing,
-          createdAt: listing.createdAt.toISOString(),
-          user:{
-            ...listing.user,
-            createdAt: listing.user.createdAt.toISOString(),
-              updatedAt: listing.user.updatedAt.toISOString(),
-              emailVerified: listing.user.emailVerified?.toString() || null
-          }
-      }
-
-  }catch (error: any) {
-        console.log(error);
-  }
+        return {
+            ...listing,
+            createdAt: new Date(listing.createdAt),
+            user: {
+                ...listing.user,
+                createdAt: new Date(listing.user.createdAt),
+                updatedAt: new Date(listing.user.updatedAt),
+                emailVerified:
+                    listing.user.emailVerified?.toString() || null,
+            }
+        };
+    } catch (error: any) {
+        throw new Error(error);
+    }
 }
