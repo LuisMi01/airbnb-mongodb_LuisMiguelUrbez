@@ -7,7 +7,13 @@ export default async function getListings() {
                 createdAt: 'desc'
             }
         })
-        return listings
+        const safeListings = listings.map((listing) => ({
+                ...listing,
+                createdAt: listing.createdAt.toISOString(),
+        }))
+        return safeListings
+        //soluciona el error al querer pasar un objeto de tipo date dentro de una clase que tiene predeterminado el 'use client'
+
     }catch (error: any) {
         throw error
     }

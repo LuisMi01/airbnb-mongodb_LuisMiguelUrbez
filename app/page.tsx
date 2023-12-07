@@ -29,7 +29,7 @@ export default async function Home() {
                                 data={listing}
                             />
                         )
-                })}
+                    })}
                 </div>
             </Container>
         </ClientOnly>
