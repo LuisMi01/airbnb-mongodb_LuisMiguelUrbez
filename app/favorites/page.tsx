@@ -3,6 +3,7 @@ import getCurrentUser from "@/app/actions/GetCurrentUser";
 import ClientOnly    from "@/app/components/ClientOnly";
 import {router} from "next/client";
 import getFavoritesListings from "@/app/actions/getFavoritesListings";
+import FavoritesClient from "@/app/favorites/FavoritesClient";
 
 const ListingPage = async () => {
 
@@ -15,9 +16,10 @@ const ListingPage = async () => {
                 <EmptyState
                 title="No tienes casas guardadas en favoritos"
                 subtitle="Añade casas a tus favoritos para tenerlas siempre a mano"
-                //crear un boton que te lleve a buscar casas a la pantalla de inicio
-
                 />
+                <button onClick={() => router.push('/')} className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-md mt-4">
+                    Busca casas!
+                </button>
             </ClientOnly>
         )
     }
