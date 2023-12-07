@@ -7,7 +7,6 @@ import {useRouter} from "next/navigation";
 import useCountries from "@/app/hooks/UseCountries";
 import {useCallback, useMemo} from "react";
 import HeartButton from "@/app/components/HeartButton";
-import Button from "@/app/components/Button";
 
 interface ListingCardProps {
     data: Listing
@@ -59,7 +58,7 @@ const ListingCard: React.FC<ListingCardProps> =({
                         className={`object-cover h-full w-full group-hover:scale-110 transition` }
                         fill
                     />
-                    <div className="absolute top-3 rigth-3">
+                    <div className="absolute top-3 rigth-2">
                         <HeartButton
                             listingId={data.id}
                             currentUser={currentUser}
@@ -77,14 +76,6 @@ const ListingCard: React.FC<ListingCardProps> =({
                         {price} € / noche
                     </div>
                 </div>
-                {onAction && actionLabel && (
-                    <Button
-                    disabled={disabled}
-                    small
-                    label={actionLabel}
-                    onClick={handleCancel}
-                    />
-                )}
             </div>
         </div>
     )

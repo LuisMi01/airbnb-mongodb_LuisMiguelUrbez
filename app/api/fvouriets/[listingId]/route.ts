@@ -20,7 +20,7 @@ export async function POST(
     const { listingId } = params;
 
     if (!listingId || typeof listingId !== 'string') {
-        throw new Error('Invalid ID');
+        throw new Error('ID no valido');
     }
 
     let favouritesIds = [...(currentUser.favouritesIds || [])];
@@ -52,7 +52,7 @@ export async function DELETE(
     const { listingId } = params;
 
     if (!listingId || typeof listingId !== 'string') {
-        throw new Error('Invalid ID');
+        throw new Error('ID no valido');
     }
 
     let favouritesIds = [...(currentUser.favouritesIds || [])];

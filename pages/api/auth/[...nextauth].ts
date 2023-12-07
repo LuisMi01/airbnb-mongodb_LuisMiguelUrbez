@@ -4,7 +4,6 @@ import bcrypt from "bcrypt";
 import NextAuth, { AuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-
 import prisma from "@/app/libs/prismadb";
 
 export const authOptions: AuthOptions = {
@@ -22,7 +21,7 @@ export const authOptions: AuthOptions = {
             },
             async authorize(credentials) {
                 if (!credentials?.email || !credentials?.password) {
-                    throw new Error("Invalid credentials");
+                    throw new Error("Credenciales no validas");
                 }
 
                 const user = await prisma.user.findUnique({
@@ -32,7 +31,7 @@ export const authOptions: AuthOptions = {
                 });
 
                 if (!user || !user?.hashedPassword) {
-                    throw new Error("Invalid credentails");
+                    throw new Error("Credenciales no validas");
                 }
 
                 const isCorrectPassword = await bcrypt.compare(
@@ -41,7 +40,7 @@ export const authOptions: AuthOptions = {
                 );
 
                 if (!isCorrectPassword) {
-                    throw new Error("Invalid credentails");
+                    throw new Error("Credenciales invalidas");
                 }
 
                 return user;
