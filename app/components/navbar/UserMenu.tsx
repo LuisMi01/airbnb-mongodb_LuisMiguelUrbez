@@ -11,6 +11,7 @@ import {signOut} from "next-auth/react";
 import Image from "next/image";
 import useRentModal from "@/app/hooks/UseRentModal";
 import {toast} from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -19,6 +20,7 @@ interface UserMenuProps {
 const UserMenu: React.FC<UserMenuProps> = ({
                                                currentUser
                                            }) => {
+    const router = useRouter();
     const RegisterModal = useRegisterModal();
     const loginModal = useLoginModal();
     const [isOpen, setIsOpen] = useState(false)
@@ -62,8 +64,8 @@ const UserMenu: React.FC<UserMenuProps> = ({
                     <div className="flex flex-col cursor-pointer">
                         {currentUser ? (
                             <>
-                                <MenuItem onClick={() => {}} label="Mis favoritos"/>
-                                <MenuItem onClick={() => {}} label="Home"/>
+                                <MenuItem onClick={() => router.push('/favorites') } label="Mis favoritos"/>
+                                <MenuItem onClick={() => router.push('/')} label="Home"/>
                                 <MenuItem onClick={rentModal.onOpen} label="Añadir casa"/>
 
                                 <hr />

@@ -21,18 +21,19 @@ export default async function getListingById(
             return null;
         }
 
-        // Try to get the user
+        //busacmos el usuario para comprobar si existe el y la casa q creo
         let user = await prisma.user.findUnique({
             where: {
                 id: listing.userId,
             },
         });
 
-        // If the user doesn't exist, create a dummy user
+        //si el usuario no existe (ya que estoy usando un csv con usuarios random no creados a mano)
+        //creo un usuario "default" para que la casa sea visible y puedas usarla
         if (!user) {
             user = {
-                id: 'unknown',
-                name: null,
+                id: 'Usuario no definido ',
+                name: 'Usuario no definido por no registrarse en la app',
                 email: null,
                 emailVerified: null,
                 image: null,
