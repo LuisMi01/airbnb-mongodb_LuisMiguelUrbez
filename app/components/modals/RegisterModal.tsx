@@ -11,10 +11,11 @@ import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import {wait} from "next/dist/lib/wait";
+import useLoginModal from "@/app/hooks/UseLoginModal";
 
 const RegisterModal = () => {
     const registerModal = useRegisterModal();
-    const loginModal = useRegisterModal();
+    const loginModal = useLoginModal();
     const [isLoading, setIsLoading] = useState(false);
 
     const {
@@ -37,7 +38,6 @@ const RegisterModal = () => {
             .then(() => {
                 toast.success("¡Éxito! Cuenta creada correctamente");
                 registerModal.onClose();
-                loginModal.onOpen();
             })
             .catch((error) => {
                 toast.error("Algo no ha ido muy bien");
@@ -50,8 +50,8 @@ const RegisterModal = () => {
     const toggle = useCallback(() => {
         registerModal.onClose();
         loginModal.onOpen();
-
     }, [loginModal, registerModal]);
+
 
     const bodyContent = (
         <div className="flex flex-col gap-4">

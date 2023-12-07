@@ -10,6 +10,7 @@ import {User} from "next-auth";
 import {signOut} from "next-auth/react";
 import Image from "next/image";
 import useRentModal from "@/app/hooks/UseRentModal";
+import {toast} from "react-hot-toast";
 
 interface UserMenuProps {
     currentUser?: User | null;
@@ -67,7 +68,10 @@ const UserMenu: React.FC<UserMenuProps> = ({
 
                                 <hr />
 
-                                <MenuItem onClick={() => signOut()} label="Cerrar sesion"/>
+                                <MenuItem onClick={() =>  {
+                                    signOut().then(r => toast.success("Se ha cerrado sesion")
+                                    )
+                                }} label="Cerrar sesion"/>
                             </>
                             ):(
                                 <>
