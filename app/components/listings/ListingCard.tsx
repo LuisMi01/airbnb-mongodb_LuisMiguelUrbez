@@ -17,7 +17,6 @@ interface ListingCardProps {
     currentUser?: SafeUser | null
 }
 
-
 const ListingCard: React.FC<ListingCardProps> =({
                                                     data,
                                                     onAction,

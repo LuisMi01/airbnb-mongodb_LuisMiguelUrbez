@@ -13,9 +13,7 @@ export interface IListingParams {
 }
 
 export default async function getListings(
-   params: IListingParams,
-    page: number,
-    pageSize: number
+   params: IListingParams
 
 ) {
 
@@ -63,22 +61,14 @@ export default async function getListings(
         }
 
 
-        const allListings = await prisma.listing.findMany({
+        const listings = await prisma.listing.findMany({
             where: query,
             orderBy: {
                 createdAt: 'desc'
             }
         })
-
-        // Calcula el índice de inicio y fin basado en el número de página y tamaño de página
-        const startIndex = (page - 1) * pageSize;
-        const endIndex = page * pageSize;
-
-        // Devuelve solo las casas para la página actual
-        const listings = allListings.slice(startIndex, endIndex);
-
         const safeListings = listings.map((listing) => ({
-            ...listing,
+                ...listing,
             createdAt: new Date(listing.createdAt)
         }))
         return safeListings
