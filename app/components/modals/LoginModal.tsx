@@ -86,7 +86,7 @@ const LoginModal = () => {
             <hr />
             <Button
                 outline
-                label="Continue with Google"
+                label="Inicia sesion con google"
                 icon={FcGoogle}
                 onClick={() => signIn("google")}
             />
