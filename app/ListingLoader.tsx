@@ -21,7 +21,7 @@ interface Listing {
 
 interface ListingLoaderProps {
     searchParams: IListingParams;
-    currentUser: SafeUser;
+    currentUser?: SafeUser | null;
 }
 
 const ListingCard = lazy(() => import('@/app/components/listings/ListingCard'));
@@ -41,6 +41,10 @@ const ListingLoader: React.FC<ListingLoaderProps> = ({ searchParams, currentUser
     useEffect(() => {
         loadListings();
     }, [page]);
+
+    if (!currentUser) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="pt-24 grid gril-cols-1 sm:grid-cols-2 ms:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
