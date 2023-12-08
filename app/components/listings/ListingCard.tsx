@@ -17,13 +17,13 @@ interface ListingCardProps {
     currentUser?: SafeUser | null
 }
 const ListingCard: React.FC<ListingCardProps> =({
-    data,
-    onAction,
-    disabled,
-    actionLabel,
-    actionId ="",
-    currentUser
-}) => {
+                                                    data,
+                                                    onAction,
+                                                    disabled,
+                                                    actionLabel,
+                                                    actionId ="",
+                                                    currentUser
+                                                }) => {
     const router = useRouter();
     const {getByValue} = useCountries()
 
@@ -44,9 +44,6 @@ const ListingCard: React.FC<ListingCardProps> =({
     const price = useMemo (() => {
         return data.price
     }, [data.price])
-
-
-
 
     return (
         <div onClick={() => router.push(`/listings/${data.id}`)} className="col-span-1 cursor-pointer group">
