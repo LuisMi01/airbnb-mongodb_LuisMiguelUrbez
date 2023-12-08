@@ -33,7 +33,7 @@ const Search = () => {
                 diff = 1
             }
 
-            return `${diff} Days`
+            return `${diff} Días`
         }
 
         return 'Cualquier semana'
@@ -41,10 +41,11 @@ const Search = () => {
 
     const guestsLabel = useMemo(() => {
         if(guests){
-            return `${guests} Invitados`
+            return`${guests} invitados`
+
         }
 
-        return 'Cualquier invitado'
+        return `Sin numero de invitados`
     }, [guests])
 
   return (

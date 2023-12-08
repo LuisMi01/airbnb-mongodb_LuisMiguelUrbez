@@ -52,7 +52,7 @@ const UserMenu: React.FC<UserMenuProps> = ({
                     } className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer">
                         <Image src='/images/uaxlogo.png' alt={"Uax"} width={30} height={30}/>
                 </div>
-                <div onClick={toggleOpen} className="p-1 md:py-5 md:px-7 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
+                <div onClick={toggleOpen} className="md:py-3 md:px-5 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition">
                     <AiOutlineMenu/>
                     <div className="hidden md:block">
                         <Avatar src={currentUser?.image}/>
