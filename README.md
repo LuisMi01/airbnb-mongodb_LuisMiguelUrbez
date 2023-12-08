@@ -1,13 +1,13 @@
 # BaseNoSQL_LuisMiguelUrbez
 
-**Deploy de la pagina web:**
-https://vercel.com/luis-miguel-urbezs-projects/mongodb-starter
+**Main deploy (ultimo) de la web**
+https://airbnb-mongodb-luis-miguel-urbez.vercel.app
 
-**Pagina web:**
+**Centro de deploys de la web**
+[https://vercel.com/luis-miguel-urbezs-projects/mongodb-starter](https://vercel.com/luis-miguel-urbezs-projects/airbnb-mongodb-luis-miguel-urbez)
+
+**Pagina web usada para empezar con MongoDB:**
 https://mongodb-starter-omega-woad.vercel.app
-
-**Repositorio de inicializacion proyecto:**
-https://github.com/mongodb-developer/mongodb-springboot
 
 **Inicializar MongoDB con SpringBoot**
 https://www.mongodb.com/compatibility/spring-boot
@@ -15,8 +15,7 @@ https://www.mongodb.com/compatibility/spring-boot
 **Centro de control MongoDB**
 https://cloud.mongodb.com/v2/6569bc3594a51b1b2b200e02#/setup/access?includeToast=true
 
-**Documentacion de los datos obtenidos**
-https://www.kaggle.com/datasets/dgomonov/new-york-city-airbnb-open-data/?select=AB_NYC_2019.csv
+**La explicacion de como se ha creado el proyecto se encuentra en la documentacion de tipo pdf en este mismo repositorio creada con Overleaf Latex**
 
 # Enunciado de la Práctica: Implementación de Programación Concurrente en Bases de Datos NoSQL
 
