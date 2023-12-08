@@ -1,5 +1,8 @@
 # BaseNoSQL_LuisMiguelUrbez
 
+**Repositorio del proyecto (publico)**
+https://github.com/LuisMi01/airbnb-mongodb_LuisMiguelUrbez
+
 **Main deploy (ultimo) de la web**
 https://airbnb-mongodb-luis-miguel-urbez.vercel.app
 
