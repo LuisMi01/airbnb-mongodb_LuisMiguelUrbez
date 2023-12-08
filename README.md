@@ -6,9 +6,6 @@ https://airbnb-mongodb-luis-miguel-urbez.vercel.app
 **Centro de deploys de la web**
 [https://vercel.com/luis-miguel-urbezs-projects/mongodb-starter](https://vercel.com/luis-miguel-urbezs-projects/airbnb-mongodb-luis-miguel-urbez)
 
-**Pagina web usada para empezar con MongoDB:**
-https://mongodb-starter-omega-woad.vercel.app
-
 **Inicializar MongoDB con SpringBoot**
 https://www.mongodb.com/compatibility/spring-boot
 
