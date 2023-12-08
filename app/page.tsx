@@ -33,7 +33,7 @@ const Home = async ({searchParams}: HomeProps) => {
             <Container>
                 <div className="pt-24 grid gril-cols-1 sm:grid-cols-2 ms:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8">
                     {listings.map((listing) => (
-                        <Suspense key={"Carga concurrente"} fallback={<div>Loading...</div> }>
+                        <Suspense key={"Cargando de forma concurrente"} fallback={<div>Loading...</div> }>
                             <MemoizedListingCard
                                 currentUser={currentUser}
                                 key={listing.id}
