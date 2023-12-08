@@ -9,8 +9,7 @@ export interface IListingParams {
     endDate?: string
     locationValue?: string
     category?: string
-    page?: number
-    pageSize?: number
+
 }
 
 export default async function getListings(
@@ -62,19 +61,12 @@ export default async function getListings(
         }
 
 
-        const page = params.page || 0;
-        const pageSize = params.pageSize || 10;
-
         const listings = await prisma.listing.findMany({
             where: query,
             orderBy: {
                 createdAt: 'desc'
-            },
-            skip: page * pageSize,
-            take: pageSize,
+            }
         })
-
-
         const safeListings = listings.map((listing) => ({
                 ...listing,
             createdAt: new Date(listing.createdAt)

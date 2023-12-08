@@ -3,7 +3,7 @@ import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
 import getListings, {IListingParams} from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/GetCurrentUser";
-import React, {lazy, Suspense} from 'react';
+import React, { lazy, Suspense } from 'react';
 
 
 interface HomeProps {
@@ -11,18 +11,11 @@ interface HomeProps {
 }
 
 const Home = async ({searchParams}: HomeProps) => {
-
-    // Carga inicial de listados
-    let page = 0;
-    let pageSize = 10;
-    let listings = await getListings({...searchParams, page, pageSize});
-
-
-    //usado promise.all para que se cargue de forma paralela los componentes de la pantalla principal
-    /*const [listings, currentUser] = await Promise.all([
-        getListings(searchParams, page, pageSize),
+    //usao promise.all para que se cargue de forma paralela los componentes de la pantalla principal
+    const [listings, currentUser] = await Promise.all([
+        getListings(searchParams),
         getCurrentUser()
-    ]);*/
+    ]);
 
     //cargo de forma concurrente los objetos de las casas para que la pagina no se cuelgue y cargue de forma paralela y dinamica
     const ListingCard = lazy(() => import('@/app/components/listings/ListingCard'));
@@ -43,16 +36,12 @@ const Home = async ({searchParams}: HomeProps) => {
                     {listings.map((listing) => (
                         <Suspense key={"Cargando de forma concurrente"} fallback={<div>Loading...</div> }>
                             <MemoizedListingCard
+                                currentUser={currentUser}
                                 key={listing.id}
                                 data={listing}
                             />
                         </Suspense>
                     ))}
-                    <button onClick={async () => {
-                        page++;
-                        const newlistings = await getListings({...searchParams, page, pageSize});
-                        listings = [...listings, ...newlistings];
-                    }}>Cargar más</button>
                 </div>
             </Container>
         </ClientOnly>
