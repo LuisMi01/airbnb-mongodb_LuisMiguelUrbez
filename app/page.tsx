@@ -1,4 +1,4 @@
-// app/page.tsx
+'use client'
 import ClientOnly from "@/app/components/ClientOnly";
 import Container from "@/app/components/Container";
 import EmptyState from "@/app/components/EmptyState";
